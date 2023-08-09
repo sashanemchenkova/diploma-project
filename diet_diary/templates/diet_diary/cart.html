@@ -1,0 +1,41 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+
+    <h1>My Cart</h1>
+    {% if not user.profile.cart.all_notes.all %}
+        <p>Your cart is empty</p>
+        <p>Result of the day: {{k}} kcal </p>
+    {%else%}
+    <ul>
+        {% for get_note in user.profile.cart.all_notes.all %}
+            <li>
+                {{ get_note.product.name }} -- {{get_note.massa}} -- {{ get_note.k }}
+            </li>
+
+        <form action="{% url 'diet_diary:edit_m' %}" method="post">
+            {% csrf_token %}
+            <input type="number" value={{get_note.massa}} name="new_massa">
+            <input type="submit" value="Change">
+            <input type="hidden" value={{get_note.id}} name="a">
+        </form>
+
+        <form action="{% url 'diet_diary:del_note' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete product">
+            <input type="hidden" value={{get_note.id}} name="a">
+      </form>
+        {% endfor %}
+    </ul>
+    <b>Result of the day: {{k}} </b>
+        <form action="{% url 'diet_diary:finish_my_day' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Finish my day" class="btn btn-primary">
+        </form>
+        <form action="{% url 'diet_diary:del_all' %}" method="post">
+        {% csrf_token %}
+            <input type="submit" value="Clear" class="btn btn-danger">
+        </form>
+    {% endif %}
+
+{% endblock %}

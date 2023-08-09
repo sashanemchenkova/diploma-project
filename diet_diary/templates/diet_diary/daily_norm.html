@@ -1,0 +1,17 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+<h1><p><em>Determine your daily calorie intake</em></p></h1>
+
+<p><em>Answer a few questions to calculate your <strong><ins>recommended</ins> </strong> amount of energy that your body needs to receive daily</em></p>
+
+<body bgcolor="D8BFD8">
+
+<form action="{% url 'diet_diary:results' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-danger">Send and view results</button>
+</form>
+</body>
+
+{% endblock %}

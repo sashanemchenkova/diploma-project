@@ -1,0 +1,34 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+<h1><p><em>Results</em></p></h1>
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th scope="col">Your daily norm</th>
+                <th scope="col">Proteins</th>
+                <th scope="col">Fats</th>
+                <th scope="col">Carbohydrates</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{user_result}} kcal</th>
+                <td>{{p}} g</td>
+                <td>{{f}} g</td>
+                <td>{{c}} g</td>
+            </tr>
+    </table>
+    <div class="card text-center">
+        <div class="card-header">
+            We recommend
+        </div>
+        <div class="card-body">
+        <h5 class="card-title">Try to add a product</h5>
+        <p class="card-text">Now you can fill out a food diary according to your norm</p>
+        <a href="{% url 'diet_diary:food_ration'%}" class="btn btn-primary">Add a product</a>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

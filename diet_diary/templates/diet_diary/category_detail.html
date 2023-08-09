@@ -1,0 +1,12 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+    <h1><p><em>{{category.name}}</em></p></h1>
+    <body bgcolor="D8BFD8">
+    <ul>
+        {% for product in category.products.all %}
+             <li><a href="{% url 'diet_diary:product_view' product.id %}">{{product.name}}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

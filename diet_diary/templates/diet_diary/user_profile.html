@@ -1,0 +1,9 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+<h1>Profile</h1>
+<p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+
+<a href="{% url 'diet_diary:update_profile' %}">Update Profile</a>
+{% endblock %}

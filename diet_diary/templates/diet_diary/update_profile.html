@@ -1,0 +1,10 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+<h1>Update Profile</h1>
+<form method="post" action="{% url 'diet_diary:update_profile'%}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
+</form>
+{% endblock %}

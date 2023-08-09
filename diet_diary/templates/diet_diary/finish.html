@@ -1,0 +1,9 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+
+    <h1>Day #{{ note.id }} finished</h1>
+
+    <p>Your overall result for today: {{ note.total_res }}</p>
+
+{% endblock %}

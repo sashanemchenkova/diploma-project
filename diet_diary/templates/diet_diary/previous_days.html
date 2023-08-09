@@ -1,0 +1,25 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+  <h1>My previous days</h1>
+  {% if all_notes %}
+      <table class="table table-bordered border-primary">
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Total result</th>
+          </tr>
+        </thead>
+        {% for note in all_notes %}
+        <tbody>
+          <tr>
+            <th scope="row">{{ note.id }}</th>
+            <td>{{ note.total_res }} kcal</td>
+            </tr>
+        </tbody>
+        {%endfor%}
+    </table>
+  {% else %}
+    <p>l.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+<h1><p><em>Welcome to the "Diet diary"</em></p></h1>
+
+<p>"Diet diary" - a little helper in maintaining a healthy lifestyle</p>
+<p>Here you can view the <strong><em>content of the site: </em></strong></p>
+    <body bgcolor="D8BFD8">
+    <div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Your personal daily norm</h5>
+        <p class="card-text">Answer the questions and find out your daily calorie intake</p>
+        <a href="{% url 'diet_diary:daily_norm'%}" class="btn btn-primary">Go to the test</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Food list</h5>
+        <p class="card-text">Find the product you need and fill out your food diary for today</p>
+        <a href="{% url 'diet_diary:food_ration'%}" class="btn btn-primary">Find a product</a>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

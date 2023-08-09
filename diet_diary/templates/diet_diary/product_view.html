@@ -1,0 +1,29 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+<h1><p><em>{{product.name}}</em></p></h1>
+<body bgcolor="D8BFD8">
+<ul>
+    <li>
+        kilocalories: {{product.kcal}} kcal
+    </li>
+     <li>
+        proteins: {{product.proteins}} g
+    </li>
+     <li>
+        fats: {{product.fats}} g
+    </li>
+     <li>
+        carbohydrates: {{product.carbohydrates}} g
+    </li>
+</ul>
+<form action="{% url 'diet_diary:add_to_cart' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Add to cart" class="btn btn-info">
+    <input type="hidden" name="product_id" value="{{ product.id }}">
+</form>
+
+<p><strong>*<ins>all product information is indicated per 100 grams</ins> </strong></p>
+
+</body>
+{% endblock %}

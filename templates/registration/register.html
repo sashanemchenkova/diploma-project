@@ -1,0 +1,13 @@
+{% extends 'diet_diary/base.html' %}
+
+{% block body %}
+<h1><p><em>{{title}}</em></p></h1>
+<body bgcolor="D8BFD8">
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+     <button type="submit" style="font: bold 14px Arial;">Registration</button>
+</form>
+</body>
+
+{% endblock %}
