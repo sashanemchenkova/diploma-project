@@ -30,6 +30,18 @@ class GetNote(models.Model):
     def k(self):
         return self.product.kcal * self.massa / 100
 
+    @property
+    def p(self):
+        return self.product.proteins * self.massa / 100
+
+    @property
+    def f(self):
+        return self.product.fats * self.massa / 100
+
+    @property
+    def c(self):
+        return self.product.carbohydrates * self.massa / 100
+
 
 class Note(models.Model):
     profile = models.ForeignKey('Profile', on_delete=models.CASCADE, related_name='notes')
@@ -46,6 +58,18 @@ class Note(models.Model):
     @property
     def total_res(self):
         return sum(get_note.k for get_note in self.all_notes.all())
+
+    @property
+    def total_p(self):
+        return sum(get_note.p for get_note in self.all_notes.all())
+
+    @property
+    def total_f(self):
+        return sum(get_note.f for get_note in self.all_notes.all())
+
+    @property
+    def total_c(self):
+        return sum(get_note.c for get_note in self.all_notes.all())
 
 
 class Profile(models.Model):

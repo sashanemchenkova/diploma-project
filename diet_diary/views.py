@@ -43,6 +43,16 @@ def product_view(request, product_id: int):
     })
 
 
+def search(request):
+    products = Product.objects.filter(name__icontains=request.POST['search'])
+    pagin = Paginator(products, 5)
+    page = request.GET.get('page')
+    obj = pagin.get_page(page)
+    return render(request, 'diet_diary/search.html', {
+        'products': products, 'page': obj,
+    })
+
+
 def results(request):
     user_result = 0.0
     p = 0.0
@@ -93,12 +103,21 @@ def add_to_cart(request):
 
 def cart(request):
     k = 0.0
+    p = 0.0
+    f = 0.0
+    c = 0.0
     all_notes = Note.objects.all()
     for get_note in all_notes:
         k = get_note.total_res
+        p = get_note.total_p
+        f = get_note.total_f
+        c = get_note.total_c
     context = {
         'all_notes': all_notes,
         'k': k,
+        'p': p,
+        'f': f,
+        'c': c,
     }
     request.user.profile.ensure_cart()
     return render(request, 'diet_diary/cart.html', context)
@@ -142,8 +161,8 @@ def del_note(request):
 
 @login_required
 def prev_d(request):
-    all_notes = request.user.profile.notes.all().order_by('id').reverse()[:5]
-    pagination = Paginator(all_notes, 5)
+    all_notes = request.user.profile.notes.all().order_by('id').reverse()[:7]
+    pagination = Paginator(all_notes, 7)
     page = request.GET.get('page')
     obt = pagination.get_page(page)
     return render(request, 'diet_diary/previous_days.html', {'all_notes': all_notes, 'page': obt, })

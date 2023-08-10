@@ -8,6 +8,9 @@
           <tr>
             <th scope="col">Day</th>
             <th scope="col">Total result</th>
+            <th scope="col">Proteins</th>
+            <th scope="col">Fats</th>
+            <th scope="col">Carbohydrates</th>
           </tr>
         </thead>
         {% for note in all_notes %}
@@ -15,6 +18,9 @@
           <tr>
             <th scope="row">{{ note.id }}</th>
             <td>{{ note.total_res }} kcal</td>
+            <td>{{ note.total_p }} g</td>
+            <td>{{ note.total_f }} g</td>
+            <td>{{ note.total_c }} g</td>
             </tr>
         </tbody>
         {%endfor%}
